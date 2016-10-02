@@ -49,6 +49,6 @@ Temporary Items
 
 
 #Java相关
-target
-out
-.idea
+target/
+out/
+.idea/
