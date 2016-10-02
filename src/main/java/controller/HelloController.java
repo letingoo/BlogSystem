@@ -14,6 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HelloController {
 
 
+
+    public HelloController() {
+
+        System.out.println("controller");
+    }
+
+
+
     @RequestMapping(method = RequestMethod.GET, value = "/test")
     public String test() {
 
