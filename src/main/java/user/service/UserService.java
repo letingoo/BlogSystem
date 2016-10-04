@@ -2,7 +2,7 @@ package user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import user.dao.UserRepository;
+import user.dao.UserMapper;
 import user.entity.User;
 
 /**
@@ -13,12 +13,12 @@ import user.entity.User;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserMapper userMapper;
 
 
     public void addUser(User user) {
 
-        userRepository.addUser(user);
+        userMapper.addUser(user);
     }
 
 }

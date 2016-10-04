@@ -5,7 +5,7 @@
 
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="url" value=""/>
+        <property name="url" value="jdbc:mysql://localhost:3306/blogSystem"/>
         <property name="username" value="root" />
         <property name="password" value="931011" />
     </bean>
@@ -18,7 +18,7 @@
 
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value=""/>
+        <property name="basePackage" value="*.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 

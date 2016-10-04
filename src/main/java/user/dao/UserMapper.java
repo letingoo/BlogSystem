@@ -8,7 +8,7 @@ import user.entity.User;
  */
 
 @Repository
-public interface UserRepository {
+public interface UserMapper {
 
     /**
      * 添加用户

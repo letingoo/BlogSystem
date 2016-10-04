@@ -21,6 +21,16 @@ public class UserController {
     private UserService userService;
 
 
+
+
+
+    @RequestMapping("/toAddUser")
+    public String toAddUser() {
+
+        return "register";
+    }
+
+
     /**
      * 添加用户
      * @return
@@ -29,7 +39,7 @@ public class UserController {
     public String addUser(User user) {
 
         userService.addUser(user);
-
+        return "hello";
     }
 
 
