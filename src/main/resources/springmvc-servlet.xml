@@ -8,9 +8,9 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
-    <!--自动扫描-->
+    <!--自动扫描Controller-->
     <mvc:annotation-driven/>
-    <context:component-scan base-package="controller" />
+    <context:component-scan base-package="*.controller" />
 
 
     <!--JSP视图解析-->
