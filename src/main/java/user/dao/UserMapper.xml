@@ -26,6 +26,13 @@
 
 
 
+    <select id="selectUser" parameterType="java.util.Map" resultMap="user">
+        SELECT * FROM user
+        WHERE userName = #{userName}
+        AND password = #{password}
+    </select>
+
+
 
 
 </mapper>

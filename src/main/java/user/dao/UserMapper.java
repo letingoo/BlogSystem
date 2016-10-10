@@ -3,6 +3,8 @@ package user.dao;
 import org.springframework.stereotype.Repository;
 import user.entity.User;
 
+import java.util.HashMap;
+
 /**
  * Created by letingoo on 2016/10/3.
  */
@@ -18,9 +20,9 @@ public interface UserMapper {
 
     /**
      * 查找用户
-     * @param userName 用户名
-     * @param password  密码
      * @return
      */
-    public User selectUser(String userName, String password);
+    public User selectUser(HashMap map);
+
+
 }
