@@ -1,5 +1,6 @@
 package user.service;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import user.dao.UserMapper;
@@ -19,6 +20,9 @@ public class UserService {
     private UserMapper userMapper;
 
 
+
+    private static final Logger logger = Logger.getLogger(UserService.class);
+
     public void addUser(User user) {
 
         userMapper.addUser(user);
@@ -31,6 +35,7 @@ public class UserService {
         map.put("userName", userName);
         map.put("password", password);
 
+        logger.debug("Login");
         return userMapper.selectUser(map);
     }
 

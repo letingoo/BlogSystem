@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="blog_system" />
+        <module name="blogSystem" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="blog_system" target="1.6" />
+      <module name="blogSystem" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -10,15 +10,15 @@ import user.service.UserService;
 /**
  * Created by letingoo on 2016/10/9.
  */
-
+/*
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:spring.xml", "classpath*:mybatis.xml" })
+@ContextConfiguration(locations = {"classpath*:spring.xml", "classpath*:mybatis.xml" })*/
 public class TestUserService {
 
     @Autowired
     private UserService service;
 
-    @Test
+/*    @Test
     public void testLogin() {
 
         String userName = "letingoo";
@@ -26,6 +26,6 @@ public class TestUserService {
 
         User user = service.doLogin(userName, password);
         System.out.println(user.getPassword());
-    }
+    }*/
 
 }
