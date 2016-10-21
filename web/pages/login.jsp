@@ -28,7 +28,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>SpringMVC 添加用户</h1>
+    <h1>SpringMVC 登录</h1>
     <hr/>
     <form:form action="/user/login" method="post" commandName="user" role="form">
         <div class="form-group">

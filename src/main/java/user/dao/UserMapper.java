@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import user.entity.User;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by letingoo on 2016/10/3.
@@ -23,6 +24,7 @@ public interface UserMapper {
      * @return
      */
     public User selectUser(HashMap map);
+
 
 
 }

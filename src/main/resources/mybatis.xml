@@ -5,8 +5,8 @@
 
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="url" value="jdbc:mysql://localhost:3306/blogSystem"/>
-        <property name="username" value="root" />
+        <property name="url" value="jdbc:mysql://114.215.159.226:3306/blogSystem"/>
+        <property name="username" value="letingoo" />
         <property name="password" value="931011" />
     </bean>
 

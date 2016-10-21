@@ -47,6 +47,14 @@ public class UserController {
 
 
 
+    @RequestMapping("/toLogin")
+    public String toLogin() {
+
+        return "login";
+    }
+
+
+
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public String doLogin(HttpServletRequest request) {
