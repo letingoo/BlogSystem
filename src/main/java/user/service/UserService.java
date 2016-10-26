@@ -36,7 +36,6 @@ public class UserService {
         map.put("userName", userName);
         map.put("password", password);
 
-        logger.debug("Login");
         return userMapper.selectUser(map);
     }
 

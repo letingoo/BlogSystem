@@ -1,4 +1,6 @@
 
+import blog.entity.Blog;
+import blog.service.BlogService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ import java.util.List;
 public class TestUserService {
 
     @Autowired
-    private UserService service;
+    private BlogService service;
 //
 //    @Test
 //    public void testLogin() {
@@ -27,6 +29,14 @@ public class TestUserService {
 //
 //        for (String item : result)
 //            System.out.println(item);
+//    }
+
+
+//    @Test
+//    public void testGetBlogs() {
+//
+//        List<Blog> blogs = service.getBlogs(1, 10);
+//        System.out.println(blogs.size());
 //    }
 
 }

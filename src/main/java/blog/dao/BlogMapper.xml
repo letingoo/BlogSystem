@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="blog.dao.BlogMapper">
+
+
+
+
+    <insert id="insertBlog" parameterType="blog.entity.Blog">
+        INSERT INTO blog
+        (
+        title,
+        content,
+        user_id
+        )
+        VALUES
+        (
+        #{title},
+        #{content},
+        #{user.id}
+        )
+    </insert>
+
+
+
+    <select id="getBlogs" parameterType="java.util.Map" resultType="blog.entity.Blog">
+        SELECT *
+        FROM blog
+        LIMIT ${start}, ${end}
+    </select>
+
+
+</mapper>
