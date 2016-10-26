@@ -50,8 +50,13 @@ public class BlogController {
     }
 
 
-
-
+    /**
+     *
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping("/showBlogs")
     public ModelAndView getBlogs(int pageNo, int pageSize) {
 
 
