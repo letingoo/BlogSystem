@@ -17,7 +17,7 @@
         (
         #{title},
         #{content},
-        #{user.id}
+        #{user.userName}
         )
     </insert>
 
@@ -27,6 +27,20 @@
         SELECT *
         FROM blog
         LIMIT ${start}, ${end}
+    </select>
+
+
+    <select id="getBlogDetail" parameterType="int" resultType="blog.entity.Blog">
+        SELECT
+        id,
+        title,
+        content,
+        userName
+        FROM blog
+        where
+        id = ${blogId}
+
+
     </select>
 
 

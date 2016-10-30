@@ -39,4 +39,14 @@ public class BlogService {
 
     }
 
+
+
+
+    public Blog getBlogDetail(int blogId) {
+
+        return mapper.getBlogDetail(blogId);
+    }
+
+
+
 }

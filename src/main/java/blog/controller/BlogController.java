@@ -51,7 +51,7 @@ public class BlogController {
 
 
     /**
-     *
+     * 获取博客列表
      * @param pageNo
      * @param pageSize
      * @return
@@ -66,6 +66,23 @@ public class BlogController {
 
         return modelAndView;
     }
+
+
+    /**
+     *
+     * @param blogId
+     * @return
+     */
+    @RequestMapping("/blogDetail")
+    public ModelAndView getBlogDetail(int blogId) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject( "blog", service.getBlogDetail(blogId) );
+        modelAndView.setViewName("blogDetail");
+
+        return modelAndView;
+    }
+
 
 
 }

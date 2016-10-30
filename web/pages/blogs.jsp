@@ -36,7 +36,7 @@
         <c:forEach items="${blogs}" var="blog">
             <li style="margin-bottom: 30px">
                 <span class="title">
-                    <a href="">${blog.title}</a>
+                    <a href="/blog/blogDetail?blogId=${blog.id}">${blog.title}</a>
                 </span>
             </li>
         </c:forEach>

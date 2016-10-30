@@ -1,6 +1,7 @@
 package blog.dao;
 
 import blog.entity.Blog;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,5 +25,13 @@ public interface BlogMapper {
      * @return
      */
     List<Blog> getBlogs(Map<String, String> map);
+
+
+    /**
+     * 得到一条博客的详细信息
+     * @param blogId
+     * @return
+     */
+    Blog getBlogDetail(@Param("blogId") int blogId);
 
 }
