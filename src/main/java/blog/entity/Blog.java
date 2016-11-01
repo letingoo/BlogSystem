@@ -2,11 +2,15 @@ package blog.entity;
 
 import user.entity.User;
 
+import java.io.Serializable;
+
 /**
  * Created by letingoo on 2016/10/24
  * 博客实体类.
  */
-public class Blog {
+public class Blog implements Serializable{
+
+
 
     private int id;
 

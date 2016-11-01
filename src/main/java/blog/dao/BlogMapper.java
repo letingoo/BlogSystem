@@ -2,6 +2,7 @@ package blog.dao;
 
 import blog.entity.Blog;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public interface BlogMapper {
      * @param blogId
      * @return
      */
+    @Cacheable(key = "'blogId' + #root.args[0]", value = "blogDetail")
     Blog getBlogDetail(@Param("blogId") int blogId);
 
 }

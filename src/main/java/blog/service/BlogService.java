@@ -3,7 +3,7 @@ package blog.service;
 import blog.dao.BlogMapper;
 import blog.entity.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.ManagedProperties;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -41,9 +41,9 @@ public class BlogService {
 
 
 
-
     public Blog getBlogDetail(int blogId) {
 
+        System.out.println("666");
         return mapper.getBlogDetail(blogId);
     }
 

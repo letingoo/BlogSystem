@@ -9,7 +9,7 @@
 
 
     <import resource="mybatis.xml" />
-
+    <import resource="spring-redis.xml" />
 
     <!--扫描Service-->
     <context:component-scan base-package="*.service" />
