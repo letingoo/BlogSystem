@@ -26,6 +26,7 @@ public class BlogService {
     }
 
 
+
     public List<Blog> getBlogs(int pageNo, int pageSize) {
 
         int start = ( pageNo - 1 ) * pageSize;

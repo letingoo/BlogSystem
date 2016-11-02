@@ -11,7 +11,7 @@
         (
         title,
         content,
-        user_id
+        userName
         )
         VALUES
         (

@@ -5,8 +5,7 @@ import blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import user.entity.User;
 
@@ -27,8 +26,12 @@ public class BlogController {
 
 
     @RequestMapping("/toAddBlog")
-    public String toAddBlog() {
-        return "addBlog";
+    public String toAddBlog(HttpSession session) {
+
+        if ( session.getAttribute("user") == null )
+            return "redirect:/user/toLogin";
+        else
+            return "addBlog";
     }
 
 
@@ -38,7 +41,8 @@ public class BlogController {
      * @param blog
      * @return
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/addBlog")
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.POST, value = "/blog")
     public String addBlog(HttpSession session, Blog blog) {
 
         if ( session.getAttribute("user") == null )
@@ -57,8 +61,10 @@ public class BlogController {
      * @param pageSize
      * @return
      */
-    @RequestMapping("/showBlogs")
-    public ModelAndView getBlogs(int pageNo, int pageSize) {
+    @RequestMapping("/blogs/{pageNo}/{pageSize}")
+    public ModelAndView getBlogs(
+            @PathVariable(value = "pageNo") int pageNo,
+            @PathVariable(value = "pageSize")  int pageSize) {
 
 
         ModelAndView modelAndView = new ModelAndView();
@@ -74,8 +80,8 @@ public class BlogController {
      * @param blogId
      * @return
      */
-    @RequestMapping("/blogDetail")
-    public ModelAndView getBlogDetail(int blogId) {
+    @RequestMapping("/blogDetail/{blogId}")
+    public ModelAndView getBlogDetail(@PathVariable int blogId) {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject( "blog", service.getBlogDetail(blogId) );
