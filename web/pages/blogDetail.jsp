@@ -20,6 +20,15 @@
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+    <script type="text/javascript">
+        function loadComments(blogId) {
+            $.get("/comment/comments/" + ${blog.id}, function(comments) {
+                alert( $.parseJSON(comments) );
+            })
+        }
+
+    </script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,41 +36,28 @@
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
 
-    <script type="text/javascript">
 
-//        $(document).ready(function () {
-//
-//            $("form#commentForm").submit(function(blogId) {
-//
-//                console.log(blogId);
-//                $.post("/comment/comment/" + blogId,
-//                        {content: $("#commentContent").val()},
-//                        function() {
-//                            alert("add Commnet success");
-//                        }
-//            });
-//            });
-//        });
-
-
-
-        function addComment(blogId) {
-
-        }
-
-    </script>
 
 
 
     <![endif]-->
 </head>
-<body>
+<body onload="loadComments(${blog.id})">
 
 <h1>${blog.title}</h1>
 
 <p>${blog.content}</p>
 
 <br>
+
+
+
+
+
+
+<br>
+
+
 
 <form method="post" action="/comment/comment/${blog.id}">
     <div class="form-group">

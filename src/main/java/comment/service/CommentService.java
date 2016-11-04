@@ -18,7 +18,7 @@ public class CommentService {
     private CommentMapper mapper;
 
 
-    public List<Comment> getCommentss(int blogId) {
+    public List<Comment> getComments(int blogId) {
 
         return mapper.getComments(blogId);
     }

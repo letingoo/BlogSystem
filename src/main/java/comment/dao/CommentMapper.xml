@@ -20,4 +20,12 @@
     </insert>
 
 
+
+    <select id="getComments" parameterType="int" resultType="comment.entity.Comment">
+        SELECT *
+        FROM comment
+        WHERE blogId = ${blogId}
+
+    </select>
+
 </mapper>

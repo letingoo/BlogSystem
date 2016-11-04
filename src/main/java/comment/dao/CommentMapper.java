@@ -1,5 +1,6 @@
 package comment.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import comment.entity.Comment;
 
@@ -13,6 +14,6 @@ public interface CommentMapper {
 
     void addComment(Comment comment);
 
-    List<Comment> getComments(int blogId);
+    List<Comment> getComments(@Param("blogId") int blogId);
 
 }
