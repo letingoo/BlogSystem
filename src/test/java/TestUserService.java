@@ -20,23 +20,10 @@ public class TestUserService {
 
     @Autowired
     private BlogService service;
-//
-//    @Test
-//    public void testLogin() {
-//
-//
-//        List<String> result = service.getPasswords();
-//
-//        for (String item : result)
-//            System.out.println(item);
-//    }
 
+    public void testRedis() {
 
-//    @Test
-//    public void testGetBlogs() {
-//
-//        List<Blog> blogs = service.getBlogs(1, 10);
-//        System.out.println(blogs.size());
-//    }
+        service.getBlogDetail(3);
+    }
 
 }

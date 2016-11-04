@@ -33,7 +33,7 @@ public interface BlogMapper {
      * @param blogId
      * @return
      */
-    //@Cacheable(key = "'blogId' + #root.args[0]", value = "blogDetail")
+    @Cacheable(key = "'blogId' + #root.args[0]", value = "blogDetail")
     Blog getBlogDetail(@Param("blogId") int blogId);
 
 }

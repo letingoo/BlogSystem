@@ -41,7 +41,7 @@ public class BlogService {
     }
 
 
-    @Cacheable(key = "'blogId' + #blogId" ,value = "service_blogId")
+    //@Cacheable(key = "'blogId' + #blogId" ,value = "service_blog")
     public Blog getBlogDetail(int blogId) {
 
         return mapper.getBlogDetail(blogId);
