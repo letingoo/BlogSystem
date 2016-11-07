@@ -26,7 +26,12 @@
     <select id="getBlogs" parameterType="java.util.Map" resultType="blog.entity.Blog">
         SELECT *
         FROM blog
-        LIMIT ${start}, ${end}
+        WHERE 1 = 1
+        <if test="blog.userName != null" >
+          AND userName = #{blog.userName}
+        </if>
+
+        LIMIT ${pageParam.start}, ${pageParam.end}
     </select>
 
 

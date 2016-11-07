@@ -5,6 +5,7 @@ import blog.entity.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import util.PageParam;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,21 +28,32 @@ public class BlogService {
 
 
 
-    public List<Blog> getBlogs(int pageNo, int pageSize) {
+    public List<Blog> getBlogs(PageParam pageParam) {
 
-        int start = ( pageNo - 1 ) * pageSize;
-        int end = pageNo * pageSize;
+        Map<String, Object> searchMap = new HashMap<String, Object>();
+        searchMap.put("pageParam", pageParam);
+        searchMap.put( "blog", new Blog() );
 
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("start", start + "");
-        map.put("end", end + "");
-
-        return mapper.getBlogs(map);
+        return mapper.getBlogs(searchMap);
 
     }
 
 
-    //@Cacheable(key = "'blogId' + #blogId" ,value = "service_blog")
+
+    public List<Blog> getBlogsByUser(PageParam pageParam, String userName) {
+
+        Map<String, Object> searchMap = new HashMap<String, Object>();
+        searchMap.put("pageParam", pageParam);
+        Blog blog = new Blog();
+        blog.setUserName( userName );
+        searchMap.put("blog", blog);
+
+        List<Blog> result = mapper.getBlogs(searchMap);
+        return result;
+    }
+
+
+
     public Blog getBlogDetail(int blogId) {
 
         return mapper.getBlogDetail(blogId);

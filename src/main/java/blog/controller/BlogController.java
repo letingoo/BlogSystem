@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import user.entity.User;
+import util.PageParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -68,7 +69,8 @@ public class BlogController {
 
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject( "blogs", service.getBlogs(pageNo, pageSize) );
+        PageParam pageParam = new PageParam(pageNo, pageSize);
+        modelAndView.addObject( "blogs", service.getBlogs(pageParam) );
         modelAndView.setViewName("blogs");
 
         return modelAndView;
@@ -91,5 +93,25 @@ public class BlogController {
     }
 
 
+    /**
+     * 查询一个用户所发的Blog
+     * @param userName
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping("/u/{userName}/{pageNo}/{pageSize}")
+    public ModelAndView getUserBlogs(@PathVariable("userName") String userName,
+                                     @PathVariable("pageNo") int pageNo,
+                                     @PathVariable("pageSize") int pageSize) {
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        PageParam pageParam = new PageParam(pageNo, pageSize);
+        modelAndView.addObject("blogs", service.getBlogsByUser(pageParam, userName));
+        modelAndView.setViewName("blogs");
+
+        return modelAndView;
+    }
 
 }

@@ -22,9 +22,13 @@
 
     <script type="text/javascript">
         function loadComments(blogId) {
-            $.get("/comment/comments/" + ${blog.id}, function(comments) {
-                alert( $.parseJSON(comments) );
-            })
+           $.get("/comment/comments/" + ${blog.id}, function(comments) {
+
+               comments.forEach(function (comment) {
+                   $("div#commentsArea").append(comment.content + "\n");
+               });
+
+            });
         }
 
     </script>
@@ -50,7 +54,9 @@
 
 <br>
 
+<div id="commentsArea">
 
+</div>
 
 
 

@@ -25,7 +25,7 @@ public interface BlogMapper {
      * @param map
      * @return
      */
-    List<Blog> getBlogs(Map<String, String> map);
+    List<Blog> getBlogs(Map<String, Object> map);
 
 
     /**

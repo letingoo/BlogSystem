@@ -21,9 +21,6 @@ public class TestUserService {
     @Autowired
     private BlogService service;
 
-    public void testRedis() {
 
-        service.getBlogDetail(3);
-    }
 
 }

@@ -19,6 +19,8 @@ public class Blog implements Serializable{
     // 内容，暂时用String类型
     private String content;
 
+    private String userName;
+
     private User user;
 
 
@@ -52,5 +54,13 @@ public class Blog implements Serializable{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
