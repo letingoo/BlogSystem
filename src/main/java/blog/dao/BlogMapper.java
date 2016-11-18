@@ -36,4 +36,12 @@ public interface BlogMapper {
     @Cacheable(key = "'blogId' + #root.args[0]", value = "blogDetail")
     Blog getBlogDetail(@Param("blogId") int blogId);
 
+
+    /**
+     * 增加blog的likes数
+     * @param blogID Blog的ID
+     * @param number 增加的likes的数量
+     */
+    void incLikes(Map<String, Integer> updateMap);
+
 }

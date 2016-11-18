@@ -31,6 +31,15 @@
             });
         }
 
+
+
+
+        function like(blogId) {
+            $.post("/like/" + blogId, null, function (result) {
+
+            });
+        }
+
     </script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -52,6 +61,9 @@
 
 <p>${blog.content}</p>
 
+
+<!-- 点赞 -->
+<button class="btn btn-sm btn-success" onclick="like(${blogId})">Like</button>
 <br>
 
 <div id="commentsArea">

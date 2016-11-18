@@ -21,6 +21,12 @@ public class TestUserService {
     @Autowired
     private BlogService service;
 
+//    @Test
+//    public void testLikeBlog() {
+//
+//        for (int i = 0; i < 7; i++)
+//            service.likeBlog(2);
+//    }
 
 
 }

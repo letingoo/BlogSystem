@@ -23,6 +23,8 @@ public class Blog implements Serializable{
 
     private User user;
 
+    // 点赞数
+    private int likes;
 
     public int getId() {
         return id;
@@ -62,5 +64,13 @@ public class Blog implements Serializable{
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }
