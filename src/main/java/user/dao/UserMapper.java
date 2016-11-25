@@ -26,5 +26,11 @@ public interface UserMapper {
     public User selectUser(HashMap map);
 
 
+    /**
+     * 更新用户资料
+     * @param user
+     */
+    public void updateUser(User user);
+
 
 }

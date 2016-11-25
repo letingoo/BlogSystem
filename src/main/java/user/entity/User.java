@@ -12,6 +12,9 @@ public class User {
 
     private String password;
 
+    // 头像
+    private String avatar;
+
     public int getId() {
         return id;
     }
@@ -34,5 +37,13 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

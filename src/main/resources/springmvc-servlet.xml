@@ -26,4 +26,16 @@
     </bean>
 
 
+    <!--支持上传文件-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+    <!--导入配置文件-->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:upload.properties</value>
+            </list>
+        </property>
+    </bean>
+
 </beans>

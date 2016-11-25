@@ -41,4 +41,10 @@ public class UserService {
 
 
 
+    public void updateUser(User user) {
+
+        userMapper.updateUser(user);
+    }
+
+
 }

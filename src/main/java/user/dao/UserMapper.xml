@@ -34,5 +34,14 @@
 
 
 
+    <update id="updateUser" parameterType="user.entity.User">
+        UPDATE user
+        SET
+        password = #{password},
+        avatar = #{avatar}
+        WHERE userName = #{userName}
+
+    </update>
+
 
 </mapper>
