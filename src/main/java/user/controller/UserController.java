@@ -1,5 +1,6 @@
 package user.controller;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 import user.entity.User;
 import user.service.UserService;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +29,9 @@ import java.util.Date;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+
+    private Gson gson = new Gson();
 
 
     @Autowired
@@ -72,7 +78,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/login")
-    public String doLogin(HttpServletRequest request) {
+    public String doLogin(HttpServletRequest request, HttpServletResponse response) {
 
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
@@ -85,6 +91,10 @@ public class UserController {
 
         else {
             request.getSession().setAttribute("user", user);
+            Cookie cookie = new Cookie("user", gson.toJson(user));
+            cookie.setMaxAge(6000);
+            response.addCookie(cookie);
+
             return "success";
         }
     }

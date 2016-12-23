@@ -10,12 +10,12 @@ public class PageParam {
      * pageNo从1开始
      */
 
-    private int start, end;
+    private int start, size;
 
     public PageParam(int pageNo, int pageSize) {
 
         start = (pageNo - 1) * pageSize;
-        end = pageNo * pageSize;
+        size = pageSize;
     }
 
 
@@ -24,7 +24,7 @@ public class PageParam {
     }
 
 
-    public int getEnd() {
-        return end;
+    public int getSize() {
+        return size;
     }
 }

@@ -11,13 +11,15 @@
         (
         title,
         content,
-        userName
+        userName,
+        time
         )
         VALUES
         (
         #{title},
         #{content},
         #{user.userName}
+        #{time}
         )
     </insert>
 
@@ -31,7 +33,7 @@
           AND userName = #{blog.userName}
         </if>
 
-        LIMIT ${pageParam.start}, ${pageParam.end}
+        LIMIT ${pageParam.start}, ${pageParam.size}
     </select>
 
 
@@ -40,12 +42,11 @@
         id,
         title,
         content,
-        userName
+        userName,
+        time
         FROM blog
         where
         id = ${blogId}
-
-
     </select>
 
 

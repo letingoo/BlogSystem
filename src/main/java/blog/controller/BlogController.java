@@ -11,6 +11,8 @@ import user.entity.User;
 import util.PageParam;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by letingoo on 2016/10/24.
@@ -50,10 +52,16 @@ public class BlogController {
             return "fail";
 
         blog.setUser( (User) session.getAttribute("user") );
+        blog.setTime(  new Timestamp((new Date()).getTime())  );
         service.addBlog(blog);
 
         return "success";
     }
+
+
+
+
+    private static int PAGE_SIZE = 10;
 
 
     /**
@@ -62,14 +70,13 @@ public class BlogController {
      * @param pageSize
      * @return
      */
-    @RequestMapping("/blogs/{pageNo}/{pageSize}")
+    @RequestMapping("/blogs/{pageNo}")
     public ModelAndView getBlogs(
-            @PathVariable(value = "pageNo") int pageNo,
-            @PathVariable(value = "pageSize")  int pageSize) {
+            @PathVariable(value = "pageNo") int pageNo) {
 
 
         ModelAndView modelAndView = new ModelAndView();
-        PageParam pageParam = new PageParam(pageNo, pageSize);
+        PageParam pageParam = new PageParam(pageNo, PAGE_SIZE);
         modelAndView.addObject( "blogs", service.getBlogs(pageParam) );
         modelAndView.setViewName("blogs");
 

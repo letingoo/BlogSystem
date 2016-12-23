@@ -7,6 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -30,7 +33,7 @@
 <div class="container">
     <h1>SpringMVC 登录</h1>
     <hr/>
-    <form:form action="/user/login" method="post" commandName="user" role="form">
+    <form:form action="${pageContext.request.contextPath}/user/login" method="post" commandName="user" role="form">
         <div class="form-group">
             <label for="userName">Last Name:</label>
             <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter userName:"/>

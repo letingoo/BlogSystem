@@ -3,6 +3,7 @@ package blog.entity;
 import user.entity.User;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * Created by letingoo on 2016/10/24
@@ -22,6 +23,9 @@ public class Blog implements Serializable{
     private String userName;
 
     private User user;
+
+    // 发帖时间
+    private Timestamp time;
 
     // 点赞数
     private int likes;
@@ -72,5 +76,13 @@ public class Blog implements Serializable{
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public void setTime(Timestamp time) {
+        this.time = time;
+    }
+
+    public Timestamp getTime() {
+        return time;
     }
 }

@@ -29,6 +29,9 @@ public class BlogService {
     private RedisTemplate<String, Integer> redisTemplate;
 
     public void addBlog(Blog blog) {
+
+
+
         mapper.insertBlog(blog);
     }
 

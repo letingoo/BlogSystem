@@ -51,7 +51,8 @@ public class LikeController {
         blogService.likeBlog(blogId);
 
         likesSet.add(blogId);
-        Cookie cookie = new Cookie("likesSet", likesSet.toString());
+        Cookie cookie = new Cookie("likesSet", gson.toJson(likesSet));
+        cookie.setMaxAge(300000);
         response.addCookie(cookie);
 
         return "success";

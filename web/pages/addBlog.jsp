@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+
 <html>
 <head>
     <title>Title</title>
@@ -31,7 +33,7 @@
 <div class="container">
     <h1>SpringMVC 添加内容</h1>
     <hr/>
-    <form:form action="/blog/blog" method="post" commandName="blog" role="form">
+    <form:form action="${pageContext.request.contextPath}/blog/blog" method="post" commandName="blog" role="form">
         <div class="form-group">
             <label for="title">Last Name:</label>
             <input type="text" class="form-control" id="title" placeholder="Enter title:" name="title"/>
