@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import user.entity.User;
 import util.PageParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -67,13 +68,10 @@ public class BlogController {
     /**
      * 获取博客列表
      * @param pageNo
-     * @param pageSize
      * @return
      */
-    @RequestMapping("/blogs/{pageNo}")
-    public ModelAndView getBlogs(
-            @PathVariable(value = "pageNo") int pageNo) {
-
+    @RequestMapping("/blogs-{pageNo}")
+    public ModelAndView getBlogs(@PathVariable int pageNo) {
 
         ModelAndView modelAndView = new ModelAndView();
         PageParam pageParam = new PageParam(pageNo, PAGE_SIZE);
@@ -82,6 +80,7 @@ public class BlogController {
 
         return modelAndView;
     }
+
 
 
     /**
@@ -93,6 +92,8 @@ public class BlogController {
     public ModelAndView getBlogDetail(@PathVariable int blogId) {
 
         ModelAndView modelAndView = new ModelAndView();
+
+        Blog blog = service.getBlogDetail(blogId);
         modelAndView.addObject( "blog", service.getBlogDetail(blogId) );
         modelAndView.setViewName("blogDetail");
 
@@ -107,18 +108,37 @@ public class BlogController {
      * @param pageSize
      * @return
      */
-    @RequestMapping("/u/{userName}/{pageNo}/{pageSize}")
+    @RequestMapping("/u/{userName}")
     public ModelAndView getUserBlogs(@PathVariable("userName") String userName,
-                                     @PathVariable("pageNo") int pageNo,
-                                     @PathVariable("pageSize") int pageSize) {
+                                     int pageNo) {
 
         ModelAndView modelAndView = new ModelAndView();
 
-        PageParam pageParam = new PageParam(pageNo, pageSize);
+        PageParam pageParam = new PageParam(pageNo, PAGE_SIZE);
         modelAndView.addObject("blogs", service.getBlogsByUser(pageParam, userName));
         modelAndView.setViewName("blogs");
 
         return modelAndView;
     }
+
+
+    /**
+     * 返回timeline的执行结果
+     * @return
+     */
+//    @RequestMapping("/timeline")
+//    public String timeline(int pageNo, HttpServletRequest request) {
+//
+//        User user = (User) request.getSession().getAttribute("user");
+//        if (user == null) {
+//            return
+//        }
+//
+//    }
+
+
+
+
+
 
 }

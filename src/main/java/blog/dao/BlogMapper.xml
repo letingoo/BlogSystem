@@ -5,8 +5,8 @@
 
 
 
-
-    <insert id="insertBlog" parameterType="blog.entity.Blog">
+    <!-- 可以更新ID -->
+    <insert id="insertBlog" parameterType="blog.entity.Blog" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO blog
         (
         title,
@@ -18,7 +18,7 @@
         (
         #{title},
         #{content},
-        #{user.userName}
+        #{user.userName},
         #{time}
         )
     </insert>
@@ -59,6 +59,18 @@
         likes = likes + #{likes}
         WHERE id = #{blogId}
     </update>
+
+
+
+    <select id="selectBlogsTimeline" parameterType="java.util.HashMap">
+        SELECT *
+        FROM blog
+        WHERE userName IN (
+              SELECT followee FROM follow
+              WHERE follower = #{userName}
+              )
+        ORDER BY time LIMIT ${start}, ${pageSize}
+    </select>
 
 
 </mapper>

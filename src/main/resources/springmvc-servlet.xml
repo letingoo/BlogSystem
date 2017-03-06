@@ -34,18 +34,10 @@
         <property name="locations">
             <list>
                 <value>classpath:upload.properties</value>
+                <!--<value>classpath:redis.properties</value>-->
             </list>
         </property>
     </bean>
-
-    <!--配置拦截器-->
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/**"/>-->
-            <!--<mvc:exclude-mapping path="/user/**" />-->
-            <!--<bean class="intercepter.LoginIntercepter"/>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
 
 
 </beans>

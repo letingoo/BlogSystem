@@ -2,13 +2,15 @@ package blog.service;
 
 import blog.dao.BlogMapper;
 import blog.entity.Blog;
+import follow.dao.FollowMapper;
+import follow.service.FollowService;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Service;
+import timeline.service.TimelineService;
 import util.PageParam;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,17 +24,23 @@ public class BlogService {
 
 
     @Autowired
-    private BlogMapper mapper;
-
+    private BlogMapper blogMapper;
 
     @Autowired
     private RedisTemplate<String, Integer> redisTemplate;
 
+
+    @Autowired
+    private AmqpTemplate amqpTemplate;
+
     public void addBlog(Blog blog) {
 
+        blogMapper.insertBlog(blog);
 
+        // 把blog推送到关注者的timeline的Redis缓存上。使用消息队列
+        amqpTemplate.convertAndSend("pushTimelineQueueKey", blog);
 
-        mapper.insertBlog(blog);
+        System.out.println("add Blog done");
     }
 
 
@@ -43,7 +51,7 @@ public class BlogService {
         searchMap.put("pageParam", pageParam);
         searchMap.put( "blog", new Blog() );
 
-        return mapper.getBlogs(searchMap);
+        return blogMapper.getBlogs(searchMap);
 
     }
 
@@ -57,7 +65,7 @@ public class BlogService {
         blog.setUserName( userName );
         searchMap.put("blog", blog);
 
-        List<Blog> result = mapper.getBlogs(searchMap);
+        List<Blog> result = blogMapper.getBlogs(searchMap);
         return result;
     }
 
@@ -65,7 +73,7 @@ public class BlogService {
 
     public Blog getBlogDetail(int blogId) {
 
-        return mapper.getBlogDetail(blogId);
+        return blogMapper.getBlogDetail(blogId);
     }
 
 
@@ -93,7 +101,7 @@ public class BlogService {
                 updateMap.put("blogId", blogId);
                 updateMap.put("likes", redis_likes + 1);
 
-                mapper.incLikes(updateMap);
+                blogMapper.incLikes(updateMap);
             }
 
             else {

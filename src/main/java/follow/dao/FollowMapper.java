@@ -17,6 +17,8 @@ public interface FollowMapper {
 
     List<String> getFollowee(String follower);
 
+    List<String> getFollower(String followee);
+
     int checkExist(Map<String, String> paramMap);
 
 

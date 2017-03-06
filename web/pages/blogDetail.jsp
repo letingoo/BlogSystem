@@ -72,7 +72,9 @@
 <body onload="loadComments(${blog.id})">
 
     <img src="" width="40" height="40"/>
-    <h1>${blog.title}</h1>
+    <a href="${request.contextPath}/blog/u/${blog.userName}?pageNo=1">
+        <h1>${blog.title}</h1>
+     </a>
     <br>
 
     <button class="btn btn-sm btn-success" onclick="follow('${blog.userName}')">Follow</button>

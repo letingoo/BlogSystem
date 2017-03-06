@@ -25,7 +25,6 @@ public class UserService {
     private static final Logger logger = Logger.getLogger(UserService.class);
 
     public void addUser(User user) {
-
         userMapper.addUser(user);
     }
 
