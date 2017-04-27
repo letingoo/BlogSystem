@@ -33,7 +33,7 @@ public interface BlogMapper {
      * @param blogId
      * @return
      */
-    @Cacheable(key = "'blogId' + #root.args[0]", value = "blogDetail")
+    //@Cacheable(key = "'blogId' + #root.args[0]", value = "blogDetail")
     Blog getBlogDetail(@Param("blogId") int blogId);
 
 
@@ -45,12 +45,9 @@ public interface BlogMapper {
     void incLikes(Map<String, Integer> updateMap);
 
 
-    /**
-     * 获得时间轴的blog列表
-     * @param searchMap
-     * @return
-     */
-    List<Blog> selectBlogsTimeline(Map<String, String> searchMap);
 
+    void deleteBlog(int blogId);
+
+    String getUserName(int blogId);
 
 }

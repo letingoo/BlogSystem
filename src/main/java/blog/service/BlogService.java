@@ -73,8 +73,42 @@ public class BlogService {
 
     public Blog getBlogDetail(int blogId) {
 
-        return blogMapper.getBlogDetail(blogId);
+
+        Blog blog = blogMapper.getBlogDetail(blogId);
+
+        int db_likes = blog.getLikes();
+
+        // 从Redis中读取likes值
+        BoundZSetOperations<String, Integer> boundZSetOperations = redisTemplate.boundZSetOps("likes");
+
+        Double score = boundZSetOperations.score(blogId);
+        if (score != null) {
+            int cache_likes = score.intValue();
+            blog.setLikes( db_likes + cache_likes );
+        }
+
+        else
+            blog.setLikes( db_likes );
+
+        return blog;
+
     }
+
+
+
+
+    public String deleteBlog(int blogId, String deleter) {
+
+        String userName = blogMapper.getUserName(blogId);
+        if (!userName.equals(deleter))
+            return "You can't delete it";
+
+
+        blogMapper.deleteBlog(blogId);
+        return "delete success";
+    }
+
+
 
 
     /**
@@ -85,6 +119,8 @@ public class BlogService {
     /**
      * 对Blog进行点赞
      * 并不直接和数据库交互，先和Redis读写，当满足一定的阈值时再写入数据库
+     *
+     * 后续应该写定时任务，定时将redis中的数据写入MySql中。
      * @param blogId
      * @return
      */
@@ -112,6 +148,27 @@ public class BlogService {
 
         return "success";
     }
+
+
+    /**
+     * 获取blog的like的数量。从Redis和MySql中一起读，取和。
+     * @param blogId
+     * @return
+     */
+//    public int getBlogLikes(int blogId) {
+//
+//        // MySql中的likes值
+//        int db_likes = blogMapper.getLikes(blogId);
+//
+//
+//        // 从Redis中读取likes值
+//        BoundZSetOperations<String, Integer> boundZSetOperations = redisTemplate.boundZSetOps("likes");
+//        int cache_likes = (boundZSetOperations.score(blogId)).intValue();
+//
+//        return db_likes + cache_likes;
+//    }
+
+
 
 
 

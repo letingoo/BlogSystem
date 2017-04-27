@@ -73,4 +73,40 @@
     </select>
 
 
+
+    <select id="getLikes" parameterType="int" resultType="int">
+        SELECT likes
+        FROM blog
+        WHERE id = #{blogId}
+    </select>
+
+
+
+
+    <select id="testLikeDump" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT followee
+        FROM follow
+        where follower like CONCAT('%', #{str}, '%')
+
+    </select>
+
+
+
+    <delete id="deleteBlog" parameterType="int">
+        DELETE
+        FROM
+        blog
+        WHERE id = #{blogId}
+    </delete>
+
+
+
+
+
+    <select id="getUserName" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT userName
+        FROM blog
+        WHERE id = #{blogId}
+    </select>
+
 </mapper>

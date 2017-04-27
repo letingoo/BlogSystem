@@ -21,7 +21,6 @@ import java.util.Date;
 
 
 @Controller
-@RequestMapping("/blog")
 public class BlogController {
 
 
@@ -88,7 +87,7 @@ public class BlogController {
      * @param blogId
      * @return
      */
-    @RequestMapping("/blogDetail/{blogId}")
+    @RequestMapping("/blog/{blogId}")
     public ModelAndView getBlogDetail(@PathVariable int blogId) {
 
         ModelAndView modelAndView = new ModelAndView();
@@ -101,11 +100,29 @@ public class BlogController {
     }
 
 
+
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.DELETE, value = "/blog/{blogId}")
+    public String deleteBlog(HttpSession session, @PathVariable int blogId) {
+
+        if (session.getAttribute("user") == null)
+            return "fail";
+
+        User user = (User) session.getAttribute("user");
+
+        return service.deleteBlog(blogId, user.getUserName());
+
+    }
+
+
+
+
+
+
     /**
      * 查询一个用户所发的Blog
      * @param userName
      * @param pageNo
-     * @param pageSize
      * @return
      */
     @RequestMapping("/u/{userName}")
@@ -120,23 +137,6 @@ public class BlogController {
 
         return modelAndView;
     }
-
-
-    /**
-     * 返回timeline的执行结果
-     * @return
-     */
-//    @RequestMapping("/timeline")
-//    public String timeline(int pageNo, HttpServletRequest request) {
-//
-//        User user = (User) request.getSession().getAttribute("user");
-//        if (user == null) {
-//            return
-//        }
-//
-//    }
-
-
 
 
 
